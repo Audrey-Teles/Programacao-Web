@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calcular</title>
+</head>
+<body>
+<form action="calcular.php" method="get">
+    <!-- Entrada 1 -->
+    <label for="idvalor1">Informe o valor 1:</label>
+    <p><input type="text" name="valor1" id="idvalor1"></p>
+
+    <label for="idoperacoes">Escolha uma operação:</label>
+    <p><select name="operacoes" id="idoperacoes">
+        <option value="1">+</option>
+        <option value="2">-</option>
+        <option value="3">x</option>
+        <option value="4">/</option>
+    </select></p>
+
+    <!-- Entrada 2 -->
+    <p><label for="idvalor2">Informe o valor 2:</label></p>
+    <input type="text" name="valor2" id="idvalor2">
+
+    <p><input type="submit" value="Calcular"></p>
+</form>
+
+</body>
+</html>
+
