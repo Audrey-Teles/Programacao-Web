@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php
-    require("../includes/cabecalho.php");
+
+session_start();
+
+if (!isset($_SESSION['username'])){
+    header("Location:../index.html");
+}
+require("../includes/cabecalho.php");
 ?>
 <body>
 <!-- ======= Header ======= -->

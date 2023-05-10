@@ -1,24 +1,37 @@
 <?php
 session_start();
 
-
-$usuario = "Audrey";
-$senha = "202cb962ac59075b964b07152d234b70";
-
-$usuario_post = $_POST['usuario'];
+$email_post = $_POST['email'];
 $senha_post = md5($_POST['senha']);
 
-if($usuario_post == $usuario){
-    if ($senha_post == $senha){
-        $_SESSION['usuario_logado'] = $usuario_post;
-        header("Location:usuario/index.php");
-    }
-    else{
-        echo "Usuário ou senha incorretos";
-    }
+$hostname = "localhost";
+$username = "root";
+$password = "";
+
+$mysqli = new mysqli($hostname,$username, $password, 'pw');
+
+
+if($mysqli->errno){
+    header("Location:cadastro.html");
+}
+
+$sql = "SELECT * FROM user WHERE email LIKE '".$email_post."' AND password LIKE '".$senha_post."'";
+
+$result = $mysqli->query($sql);
+
+if(!$result){
+    echo "Houve um erro!";
 }
 else{
-    echo "Usuário ou senha incorretos";
+    if($result->num_rows < 1){
+        echo "<p>Email ou senha incorretos!</p>";
+    }
+    else{
+        $usuario_logado = mysqli_fetch_assoc($result);
+
+        $_SESSION['username'] = $usuario_logado['username'];
+        header("Location:usuario/index.php");
+    }
 }
 
 
