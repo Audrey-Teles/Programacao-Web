@@ -4,6 +4,9 @@
 
 session_start();
 
+$username = $_SESSION['username'];
+
+
 if (!isset($_SESSION['username'])){
     header("Location:../index.html");
 }
@@ -182,7 +185,9 @@ require("../includes/cabecalho.php");
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">
+                        <?php echo $username;
+                        ?></span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -195,7 +200,7 @@ require("../includes/cabecalho.php");
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="profile_user.php">
                             <i class="bi bi-person"></i>
                             <span>My Profile</span>
                         </a>
@@ -215,9 +220,9 @@ require("../includes/cabecalho.php");
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                            <i class="bi bi-question-circle"></i>
-                            <span>Need Help?</span>
+                        <a class="dropdown-item d-flex align-items-center" href="../deletar.php">
+                            <i class="bi bi-bin"></i>
+                            <span>Apagar conta</span>
                         </a>
                     </li>
                     <li>
@@ -225,9 +230,9 @@ require("../includes/cabecalho.php");
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="../sair.php">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
+                            <span>Logout</span>
                         </a>
                     </li>
 
